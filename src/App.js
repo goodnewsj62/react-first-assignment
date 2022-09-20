@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import UserInput from 'components/UserInput';
+import UserOutput from 'components/UserOutput';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [username, setUsername] = useState("routebirds");
+
+  function changeusername(ref) {
+    setTimeout(() => { setUsername(ref.current.value) }, 2000);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserOutput text="some text yo" username={username} />
+      <UserInput change={changeusername} />
     </div>
   );
 }
